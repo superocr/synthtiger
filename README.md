@@ -43,7 +43,7 @@ pip install synthtiger
 synthtiger -o results -w 4 -v examples/multiline/template.py Multiline examples/multiline/config.yaml
 ```
 
-<img src="./images/det_demo_1.jpg" alt="文本检测样例" style="zoom: 33%;" /><img src="./images/det_demo_2.jpg" alt="文本检测样例" style="zoom: 33%;" />
+<img src="./images/det_demo_1.jpg" alt="文本检测样例" style="zoom: 10%;" /><img src="./images/det_demo_2.jpg" alt="文本检测样例" style="zoom: 10%;" />
 
 通过config.yml中的background参数可控制是否使用图片作为背景。
 
