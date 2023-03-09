@@ -134,7 +134,7 @@ class TextLayer(Layer):
         sx, sy, patch_width, patch_height = inner_bbox
 
         patch, _ = self._get_image(char, font, color, bold, False)
-        patch = patch[sy : sy + patch_height, sx : sx + patch_width]
+        patch = patch[sy: sy + patch_height, sx : sx + patch_width]
         patch_height, patch_width = patch.shape[:2]
 
         ascent = -bbox[1]
