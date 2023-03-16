@@ -2,14 +2,14 @@ count: 20
 background: true
 
 corpus:
-  paths: [resources/corpus/latin/en/test.txt]
+  paths: [resources/corpus/latin/vi/test.txt]
   weights: [1]
   min_length: 1
-  max_length: 25
+  max_length: 251
   textcase: [lower, upper, capitalize]
 
 font:
-  paths: [resources/font]
+  paths: [resources/font/latin_vi]
   weights: [1]
   size: [32, 64]
   bold: 0.5

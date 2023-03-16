@@ -122,7 +122,7 @@ class Multiline(templates.Template):
 
         os.makedirs(os.path.dirname(image_path), exist_ok=True)
         image = Image.fromarray(image[..., :3].astype(np.uint8))
-        image.save(image_path, quality=95)
+        image.save(image_path, quality=30)
         image_path = image_path.replace('\\', '/')
         self.gt_file.write(f"{image_path}\t{labels}\n")
 
