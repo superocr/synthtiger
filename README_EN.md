@@ -131,7 +131,7 @@ synthtiger -o results -w 4 -v examples/multiline/template.py Multiline examples/
    python tools/extract_font_charset.py -w 4 fonts/
    ```
 
-   This script extracts renderable charsets for all font files ([example](resources/font/Ubuntu-Regular.txt)).
+   This script extracts renderable charsets for all font files ([example](resources/font/latin_en/Ubuntu-Regular.txt)).
 
    Text files are generated in the input path with the same names as the fonts.
 
