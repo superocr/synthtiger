@@ -180,6 +180,8 @@ class SynthTiger(templates.Template):
 
         os.makedirs(os.path.dirname(image_path), exist_ok=True)
         image.save(image_path, quality=quality)
+        # 转换目录分隔符
+        image_path = image_path.replace('\\', '/')
         if self.mask_output:
             os.makedirs(os.path.dirname(mask_path), exist_ok=True)
             mask.save(mask_path)
@@ -187,11 +189,11 @@ class SynthTiger(templates.Template):
             os.makedirs(os.path.dirname(glyph_mask_path), exist_ok=True)
             glyph_mask.save(glyph_mask_path)
 
-        self.gt_file.write(f"{image_key}\t{label}\n")
+        self.gt_file.write(f"{image_path}\t{label}\n")
         if self.coord_output:
-            self.coords_file.write(f"{image_key}\t{coords}\n")
+            self.coords_file.write(f"{image_path}\t{coords}\n")
         if self.glyph_coord_output:
-            self.glyph_coords_file.write(f"{image_key}\t{glyph_coords}\n")
+            self.glyph_coords_file.write(f"{image_path}\t{glyph_coords}\n")
 
     def end_save(self, root):
         self.gt_file.close()
