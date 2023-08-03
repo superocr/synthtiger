@@ -179,6 +179,9 @@ class SynthTiger(templates.Template):
         glyph_mask_path = os.path.join(root, glyph_mask_key)
 
         os.makedirs(os.path.dirname(image_path), exist_ok=True)
+        # 如果是生成的竖直文本图片的话逆时针旋转90度
+        if self.vertical is True:
+            image = image.transpose(Image.ROTATE_90)
         image.save(image_path, quality=quality)
         # 转换目录分隔符
         image_path = image_path.replace('\\', '/')
@@ -219,7 +222,8 @@ class SynthTiger(templates.Template):
         label = self.corpus.data(self.corpus.sample())
 
         # for script using diacritic, ligature and RTL
-        chars = utils.split_text(label, reorder=True)
+        # chars = utils.split_text(label, reorder=True)
+        chars = [label]
 
         text = "".join(chars)
         font = self.font.sample({"text": text, "vertical": self.vertical})
