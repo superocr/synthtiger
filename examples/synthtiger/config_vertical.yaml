@@ -1,13 +1,13 @@
-coord_output: true
-mask_output: true
-glyph_coord_output: true
-glyph_mask_output: true
+coord_output: false
+mask_output: false
+glyph_coord_output: false
+glyph_mask_output: false
 
 vertical: true
 quality: [50, 95]
 visibility_check: true
 
-midground: 0.25
+midground: 0
 midground_offset:
   percents: [[-0.5, 0.5], [-0.5, 0.5]]
 foreground_mask_pad: 5
@@ -16,8 +16,8 @@ corpus:
   weights: [1, 0]
   args:
     # length augmentable corpus
-    - paths: [resources/corpus/mjsynth.txt, resources/corpus/synthtext.txt]
-      weights: [1, 1]
+    - paths: [resources/corpus/latin/en/test.txt]
+      weights: [1]
       min_length: 1
       max_length: 15
       textcase: [lower, upper, capitalize]
@@ -30,10 +30,10 @@ corpus:
       max_length: 15
       textcase: [lower, upper, capitalize]
       augmentation: 0
-      augmentation_charset: resources/charset/alphanum_special.txt
+      augmentation_charset: resources/charset/mjsynth.txt
 
 font:
-  paths: [resources/font]
+  paths: [resources/font/latin_en]
   weights: [1]
   size: [40, 80]
   bold: 0.5
@@ -41,21 +41,21 @@ font:
 texture:
   prob: 0.5
   args:
-    paths: [resources/image]
+    paths: [resources/imagelsvt]
     weights: [1]
     alpha: [0, 1]
     grayscale: 0
     crop: 1
 
 colormap2:
-  paths: [resources/colormap/iiit5k_gray.txt]
+  paths: [resources/colormap/lsvt5082map.txt]
   weights: [1]
   k: 2
   alpha: [1, 1]
   colorize: 1
 
 colormap3:
-  paths: [resources/colormap/iiit5k_gray.txt]
+  paths: [resources/colormap/lsvt5082map.txt]
   weights: [1]
   k: 3
   alpha: [1, 1]
@@ -85,7 +85,7 @@ layout:
     - space: [0, 0]
       line_align: [middle]
     # curve layout
-    - curve: [10, 20]
+    - curve: [0, 10]
       space: [0, 0]
       convex: 0.5
       upward: 0.5
@@ -131,14 +131,14 @@ transform:
         align: [-1, 1]
       # skew x
       - weights: [1, 0]
-        angle: [0, 5]
+        angle: [0, 2]
         ccw: 0.5
       # skew y
       - weights: [0, 1]
-        angle: [0, 30]
+        angle: [0, 2]
         ccw: 0.5
       # rotate
-      - angle: [0, 5]
+      - angle: [0, 2]
         ccw: 0.5
 
 pad:
