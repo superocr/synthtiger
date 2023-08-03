@@ -1,23 +1,24 @@
-coord_output: true
-mask_output: true
-glyph_coord_output: true
-glyph_mask_output: true
+coord_output: false
+mask_output: false
+glyph_coord_output: false
+glyph_mask_output: false
 
 vertical: false
 quality: [50, 95]
 visibility_check: true
 
-midground: 0.25
+midground: 0
 midground_offset:
   percents: [[-0.5, 0.5], [-0.5, 0.5]]
 foreground_mask_pad: 5
 
+# 配置语料
 corpus:
   weights: [1, 0]
   args:
     # length augmentable corpus
-    - paths: [resources/corpus/mjsynth.txt, resources/corpus/synthtext.txt]
-      weights: [1, 1]
+    - paths: [resources/corpus/latin/en/test.txt]
+      weights: [1]
       min_length: 1
       max_length: 25
       textcase: [lower, upper, capitalize]
@@ -32,30 +33,39 @@ corpus:
       augmentation: 0
       augmentation_charset: resources/charset/alphanum_special.txt
 
+# 配置字体
 font:
-  paths: [resources/font]
+  paths: [resources/font/latin_en]
   weights: [1]
   size: [40, 80]
   bold: 0.5
 
+# 配置背景图片
 texture:
   prob: 0.5
   args:
-    paths: [resources/image]
+    paths: [resources/imagelsvt]
     weights: [1]
     alpha: [0, 1]
     grayscale: 0
     crop: 1
 
+colormap1:
+  paths: [resources/colormap/lsvt5082map.txt]
+  weights: [1]
+  k: 1
+  alpha: [1, 1]
+  colorize: 1
+
 colormap2:
-  paths: [resources/colormap/iiit5k_gray.txt]
+  paths: [resources/colormap/lsvt5082map.txt]
   weights: [1]
   k: 2
   alpha: [1, 1]
   colorize: 1
 
 colormap3:
-  paths: [resources/colormap/iiit5k_gray.txt]
+  paths: [resources/colormap/lsvt5082map.txt]
   weights: [1]
   k: 3
   alpha: [1, 1]
@@ -144,7 +154,7 @@ transform:
 pad:
   prob: 1
   args:
-    pxs: [[0, 10], [0, 10], [0, 10], [0, 10]]
+    pxs: [[0, 20], [0, 80], [0, 20], [0, 80]] #  上，右，下，左
 
 postprocess:
   args:
