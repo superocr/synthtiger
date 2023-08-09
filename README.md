@@ -30,6 +30,10 @@ conda create -n synthtiger python=3.7
 ```
 
 ```bash
+conda activate synthtiger 
+```
+
+```bash
 pip install synthtiger
 ```
 
@@ -127,6 +131,17 @@ synthtiger -o results -w 4 -v examples/synthtiger/template.py SynthTiger example
 ```
 
 <img src="./images/rec_demo_1.jpg" alt="文本检测样例" style="zoom: 100%;" />
+
+- 数据格式转换（只针对阿拉伯语系）
+
+由于阿拉伯语系文字（包括阿拉伯文、维吾尔文、波斯文等）是从右往左进行书写的，当存在从右往左进行书写的文字与从左往右书写的文字在同一行中时会存在bidi问题，我们需要对阿拉伯语系的数据集进行格式转换以处理该问题，我们提供了转换代码，只需执行如下命令：
+
+```bash
+python tools/transform_arabic_label.py \
+         --label_path ./arabic_fa_synthtiger_train/gt.txt
+```
+
+其中，label_path指生成数据的标签文件所在路径。执行完成后，我们便可以在同级目录下得到一个gt_transform.txt的转换后标签文件。
 
 
 ## 文本检测
